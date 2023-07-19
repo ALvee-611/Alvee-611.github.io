@@ -11,14 +11,12 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* Bachelor's of Mathematics in Honours Statistics, University of Waterloo, 2017 to 2022
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
+* May 2022 - May 2023: Data Processing Analyst
+  * ERIS Info.
   * Duties included: Tagging issues
   * Supervisor: Professor Git
 
