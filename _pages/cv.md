@@ -25,11 +25,14 @@ Skills
 * Python
 * R
 * SQL
+  * Sub-skill 2.1
+  * Sub-skill 2.2
+  * Sub-skill 2.3
 * MS Excel
   * Sub-skill 2.1
   * Sub-skill 2.2
   * Sub-skill 2.3
-* Skill 3
+* Power BI for Data Viz
 
 Certifications
 ======

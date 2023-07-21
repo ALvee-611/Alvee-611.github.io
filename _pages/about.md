@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Alvee's Portfolio"
+title: "Portfolio website"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,14 +8,12 @@ redirect_from:
   - /about.html
 ---
 
+CURRENTLY UNDER CONSTRUCTION!! 
 
-A data-driven personal website
-======
-CURRENTLY UNDER CONSTRUCTION!!
+PLEASE CHECKOUT MY GITHUB INSTEAD: [CLICK HERE TO REDIRECT TO GITHUB](https://github.com/Alvee-611).
+
 
 As a data analyst with 1+ year of experience in data analytics, I am a detail-oriented professional with expertise in Python, SQL, R, Excel and Power BI and a passion for translating complex data into actionable insights. I am skilled in VLOOKUP, Pivot Tables, macros, formulas and charts in MS Excel and have experience in data visualization, data modelling, statistical analysis and machine learning. I am always eager to learn and improve my skills, and I am excited to leverage my expertise in data analytics to help organizations achieve their goals.
-
-I love connecting with people so give me a shout here on LinkedIn! [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
 
 
 Website Layout
