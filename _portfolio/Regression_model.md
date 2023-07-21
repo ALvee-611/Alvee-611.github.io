@@ -9,4 +9,4 @@ The dataset Hours is a subset of the 1976 Panel Study of Income Dynamics (PSID) 
 Weighted Least Squares (WLS) can be used when the data is heteroscedastic (but uncorrelated).
 
 
-[a map of every location you've given a talk](https://alvee-611.github.io/talkmap.html){:target="_blank"}
+[a map of every location you've given a talk](https://alvee-611.github.io/terms.md){:target="_blank"}

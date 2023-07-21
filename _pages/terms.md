@@ -1,5 +1,6 @@
 ---
-permalink: /terms/
+# permalink: /terms/
+permalink: /terms.md
 title: "Terms and Privacy Policy"
 modified: 2016-06-06
 ---
