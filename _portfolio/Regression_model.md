@@ -9,7 +9,14 @@ All the code and data can be found here: <i class="fab fa-fw fa-github" aria-hid
 
 Weighted Least Squares (WLS) can be used when the data is heteroscedastic (but uncorrelated).
 
+![alt text](..\..\images\plot_1.png)
+
 Here since the errors are spread equally around the regression line we can see that it is not heterscedastic and so OLS is fine here.
+
+Model Building
+---
+
+### Variables included in the model and why
 
 Before I can build our model, I need to decide which variables to include. I want the model to explain the number of hours worked by women in 1975. So I would need to consider whether the women had kids. If she had young kids, clearly she would probably have had to stay home to take care of them so would not have been able to work or work less hours. So I need to include the first variable "youngkids". Note that the second variable also talks about the number of kids she had but the only difference is that the "youngkids" is the number of children less than 6 years old in household whereas "oldkids" is the number of children between ages 6 and 18 in household. Having a kid younger than 6 years old would definitely require the mother to stay home more but so would a 8 year old using same logic. So including these two variable seem redundnt and instead I will create a dummy variable of our own that is 1 if she had kids younger than 18 and 0 otherwise. We will call this variable "haveKids". I added both youngkids and "havekids" since "youngkids" is giving the number of under 6 year old kids whereas "havekids" is a dummby variable for is she had kids at all or not. 
 
@@ -35,6 +42,8 @@ As for "wage", it doesnot really teel us much about the hours she would work sin
 
 To summarise, I included "havekids","age","youngkids","experience","hwage" and "hhours" in my model.
 
+### Considering 3 models (trying out log-lin, lin-lin, square variables, interactions etc.)
+
 Once I have selected my variables, I will try 3 different models.
 
 If the woman had kids younger than 18 at home, she might decide to stay home to take care of them or work less hours.This is also dependant on whether the husband is working long hours. If "hhours" is high the wife with kids might have to work less or no hours since you need atleast one parent to be there for the kids. So I want to introduce the interaction between "havekids" and "hhours" since I believe there is a relationship between them.
@@ -48,8 +57,8 @@ I added the interaction $havekids \times hhours$ since having kids and the husba
 I tried $log(hours)$ to make sure the residuals are not too skewed. I have both $havekids \times hhours^2$ and hhours, since there is likely to things how the husband's working hours effects the wife's: 1. Having kids and housband working long hours will result in wife deciding to work less hours to stay home and take care of the kids, 2. Husband woring long hours and so earning enough to support the family.
 
 
-We first estimate the models and test the homoscedasticity using the short White test:
----
+### We first estimate the models and test the homoscedasticity using the short White test:
+
 Since p-value is greater than 0.05, we do not reject the homoscedasticity assumption at 5%, so we do not need to use robust tests.
 
 Since p-value is less than 0.05, we reject the homoscedasticity assumption at 5%, so we need to use robust tests.
@@ -106,20 +115,25 @@ There seem to still be some outliers. Removing those too:
 
 Now, the Cook's distance are closer to being equal. We can compare the results to see what is the impact of dropping these three observations:
 
-### Interpretation and Analysis
-
+Interpretation and Analysis
+---
 Since model 1 is homoscedastic we can just use summary() to check the coefficients:
 
 
 ### Interpreting the coefficients
 
-Intercept: Here the intercept has no meaning since age would have be 0 which has no meaning.\newline
+Intercept: Here the intercept has no meaning since age would have to be 0 which has no meaning.
+
 youngkids and $youngkids^2$ need to be explained using partial effect which is done in the next section.
+
 age: women who are 1 more year older will have a difference in hours worked of 40.2112 less when holding all the other variables constant.
+
 experience: women who have 1 more year of experience will have a difference in hours worked of 45.2454 more when holding all the other variables constant.
+
 hwage: women whose husbands earn 1 more dollar in wage will have a difference in hours worked of 16.7687 less when holding all the other variables constant.
 
 For hhours and $havekids \times hhours$
+
 If the woman had no kids the difference in hours worked will be 0.0510 more when holding all the other variables constant. But, if the woman had kids the difference in hours worked will be 0.0994 less when holding all the other variables constant.
 
 
@@ -130,7 +144,7 @@ Firstly, p-value of I(youngkids^2) is greater than 0.05, so we cannot reject Nul
 youngkids,age and experience are the only statisticall significant features in this model since they have p-value less than 0.05 (so we can reject Null Hypothesis.)
 
 
-## Confidence Interval of the coefficients
+### Confidence Interval of the coefficients
 
                                     2.5 %                   97.5 %\
 (Intercept)           1042.4929436             3118.9270931\
@@ -145,15 +159,17 @@ hwage                  -38.8521533               5
 
 These intervals are where we will find its corresponding variables 95% of the time.
 
-## Average partial effects:
+### Average partial effects:
 
 average partial effect of youngkids on hours is $\beta_1+2\beta_2\overline{youngkids}$
 
 The average hours worked by the woman with a kid yonger than 6 and the same level of education, hhours,age and hwage is 857.0461 hours less, when their initial number of young kids is equal to the sample average.
 
-The true APE is between -1247.563 and -466.529 95% of the time.
+95% of the time the true APE is between -1247.563 and -466.529
 
-## Does having children less than 6 have the same effect as having children between ages 6 and 18?
+Hypothesis Testing
+---
+### Does having children less than 6 have the same effect as having children between ages 6 and 18?
 
 The model is:
 
@@ -171,7 +187,9 @@ Using F-test (non-robust since it is homoscedastic):
 
 Since p-value is less than 0.05 we can reject the Null hypothesis and conclude that having children less than 6 does not have the same effect as having children between ages 6 and 18.
 
-## effect of youngkids and hhours
+### Effect of youngkids and hhours
+
+hhours and youngkids seem to have an inverse non linear relationship
 
 ### WOMEN WITHOUT KIDS VS WOMEN WITH KIDS
 
