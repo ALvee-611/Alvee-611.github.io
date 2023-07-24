@@ -7,11 +7,10 @@ The dataset Hours is a subset of the 1976 Panel Study of Income Dynamics (PSID) 
 
 All the code and data can be found here: <i class="fab fa-fw fa-github" aria-hidden="true"></i><a href="https://github.com/ALvee-611/Projects_/tree/main/Regression%20Analysis%20of%20of%20hours%20worked%20by%20women%20in%201975" target="_blank">Github</a>
 
-Weighted Least Squares (WLS) can be used when the data is heteroscedastic (but uncorrelated).
+Weighted Least Squares (WLS) can be used when the data is heteroscedastic (but uncorrelated). Here since the errors are spread equally around the regression line we can see that it is not heterscedastic and so OLS is fine here. 
 
 ![plot of residuals](..\..\images\plot_1.png)
 
-Here since the errors are spread equally around the regression line we can see that it is not heterscedastic and so OLS is fine here.
 
 Model Building
 ---
