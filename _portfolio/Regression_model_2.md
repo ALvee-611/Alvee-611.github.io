@@ -1,5 +1,5 @@
 ---
-title: "testing the presence of racial discrimination in the labour market"
+title: "Testing the presence of racial discrimination in the labour market"
 excerpt: "Formulate 4 different questions related to discrimination and build one model for each question.
 For example, (that example cannot be used), is discrimination"
 collection: portfolio
