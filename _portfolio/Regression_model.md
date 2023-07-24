@@ -1,6 +1,6 @@
 ---
 title: "Regression Analysis of of hours worked by women in 1975"
-excerpt: "Conducted regression analysis, interpreting coefficients with significance tests, making predictions with confidence intervals. Employed dummy variables and tested equality of coefficients. Utilized J-test and RESET specification test. Discussed measurement errors and proxy variables' effects. Applied Cook's distance for outlier detection" #<img src='/images/500x300.png'>"
+excerpt: "Conducted regression analysis, interpreting coefficients with significance tests, making predictions with confidence intervals. Employed dummy variables and tested equality of coefficients. Utilized J-test and RESET specification test. Discussed measurement errors and proxy variables' effects. Applied Cook's distance for outlier detection and conducted hypothesis testing"
 collection: portfolio
 ---
 The dataset Hours is a subset of the 1976 Panel Study of Income Dynamics (PSID) that contains 19 variables. In this project I will build a model that explains the number of hours worked by women in 1975. The dependent variable here is "hours". Models with dependent variables that contain many 0's are not usually estimated by OLS, but we ignore it for this project. 
@@ -9,7 +9,7 @@ All the code and data can be found here: <i class="fab fa-fw fa-github" aria-hid
 
 Weighted Least Squares (WLS) can be used when the data is heteroscedastic (but uncorrelated).
 
-![alt text](..\..\images\plot_1.png)
+![plot of residuals](..\..\images\plot_1.png)
 
 Here since the errors are spread equally around the regression line we can see that it is not heterscedastic and so OLS is fine here.
 
@@ -56,18 +56,42 @@ I added the interaction $havekids \times hhours$ since having kids and the husba
 
 I tried $log(hours)$ to make sure the residuals are not too skewed. I have both $havekids \times hhours^2$ and hhours, since there is likely to things how the husband's working hours effects the wife's: 1. Having kids and housband working long hours will result in wife deciding to work less hours to stay home and take care of the kids, 2. Husband woring long hours and so earning enough to support the family.
 
+The first model is:
+
+![model_1](..\..\images\model_1.png)
+
+The second model is:
+
+![model_2](..\..\images\model_2.png)
+
+The third model is:
+
+![model_3](..\..\images\model_3.png)
 
 ### We first estimate the models and test the homoscedasticity using the short White test:
 
+Checking model_1:
+
+![bp test for model_1](..\..\images\bp_test_1.png)
+
 Since p-value is greater than 0.05, we do not reject the homoscedasticity assumption at 5%, so we do not need to use robust tests.
+
+Checking model_2:
+
+![bp test for model_2](..\..\images\bp_test_2.png)
 
 Since p-value is less than 0.05, we reject the homoscedasticity assumption at 5%, so we need to use robust tests.
 
+Checking model_3:
+
+![bp test for model_3](..\..\images\bp_test_3.png)
+
 Since p-value is greater than 0.05, we do not reject the homoscedasticity assumption at 5%, so we do not need to use robust tests.
+
 
 Model_1 and Model_3 are nested models.So we can just use indirect-t test to see if the extra "youngkids^2" term is significant or not in model 1.
 
-
+![indirect-t test test for model_1](..\..\images\indirect_t.png)
 
 
 Since p-value is less than 0.05 we reject the Null hypothesis that the coefficient of "youngkids^2" is 0. So we conclude that "youngkids^2" is significant. So we choose Model 1 instead.
@@ -88,37 +112,41 @@ M2 + fitted(M1)   1.7307    1.77742  0.9737   0.3302
 
 Both have p-value greater than 0.05 so we can see that both models cannot be rejected. I decided to go with mdoel 1 because choosing model 2 will result in us losing a lot of data (we lose all the data corresponding to hours less than or equal to 0).
 
-Now I will test the null hypothesis that the model is correctly specified at 5% using the RESET test.
+Now I will test the null hypothesis that the model is correctly specified at 5% using the RESET test. Since it is homoscedastic, we can just use the non-robust test.
 
-\
-    RESET test
+![reset test](..\..\images\rest_1.png)
 
-data:  model_1\
-RESET = 1.7242, df1 = 2, df2 = 183, p-value = 0.1812
-
-Since it is homoscedastic, we can just use the non-robust test.
-
-
-Since the p-value is greater than 5% we cannot reject the hypothesis that the model is correctly specified.
+The p-value is greater than 5% we cannot reject the hypothesis that the model is correctly specified.
 
 The summary for Model 1 is as follows:
 
-
+![Summary of Model 1](..\..\images\model_1_summary.png)
 
 ### Removing Outliers
 
 The Cook's distance for detecting outliers is plotted by the plot method for lm objects. 
 
+![Cook test 1](..\..\images\cook_1.png)
+
 These are the names of the rows (37,403,126).So we can remove observations 126, 403 and 37.
+
+![Cook test 2](..\..\images\cook_2.png)
 
 There seem to still be some outliers. Removing those too:
 
+![Cook test 3](..\..\images\cook_3.png)
+
 Now, the Cook's distance are closer to being equal. We can compare the results to see what is the impact of dropping these three observations:
+
+![Model summary after removing outliers](..\..\images\after_cook.png)
 
 Interpretation and Analysis
 ---
+![residual vs Fitted](..\..\images\residual_fit.png)
+
 Since model 1 is homoscedastic we can just use summary() to check the coefficients:
 
+![Model Summary](..\..\images\img_new.png)
 
 ### Interpreting the coefficients
 
@@ -146,16 +174,7 @@ youngkids,age and experience are the only statisticall significant features in t
 
 ### Confidence Interval of the coefficients
 
-                                    2.5 %                   97.5 %\
-(Intercept)           1042.4929436             3118.9270931\
-youngkids            -1421.8595694             -463.8705005\
-I(youngkids^2)         -40.0973524             456.3192898\
-I(havekids * hhours)    -0.5043688              0.2034895\
-havekids              -413.3193116             1175.0595644\
-age                    -56.5112827             -23.9110902\
-experience              32.7672287              57.7235865\
-hhours                  -0.2303860               0.3323772\
-hwage                  -38.8521533               5.3147953
+![Confidence Interval](..\..\images\confidence.png)
 
 These intervals are where we will find its corresponding variables 95% of the time.
 
@@ -171,26 +190,35 @@ Hypothesis Testing
 ---
 ### Does having children less than 6 have the same effect as having children between ages 6 and 18?
 
-The model is:
+The model is: 
 
-$hours= \beta_0+\beta_1youngkids+\beta_2youngkids^2+\beta_3(havekids\times hhours)+\beta_4age+\beta_5experience+\beta_6hhours+\beta_7hwage $
+![Hypothesis testing model](..\..\images\h_m_1.png)
 
 if the woman has children less than 6, then we can use this model for inference however, if the woman doe not have children less than 6 but instead only has children between ages 6 and 18, then youngkids = 0 but havekids is still 1. So our new model would be: 
 
-$hours= \beta_0+\beta_3(havekids\times hhours)+\beta_4age+\beta_5experience+\beta_6hhours+\beta_7hwage $
+![Hypothesis testing model](..\..\images\h_m_2.png)
 
-So using $hours= \beta_0+\beta_1youngkids+\beta_2youngkids^2+\beta_3(havekids\times hhours)+\beta_4age+\beta_5experience+\beta_6hhours+\beta_7hwage$
 
 I want to see if $\beta_1=\beta_2=0$
 
 Using F-test (non-robust since it is homoscedastic):
 
+![F test](..\..\images\f_test.png)
+
 Since p-value is less than 0.05 we can reject the Null hypothesis and conclude that having children less than 6 does not have the same effect as having children between ages 6 and 18.
 
 ### Effect of youngkids and hhours
+
+![checking relationship](..\..\images\effect_1.png)
 
 hhours and youngkids seem to have an inverse non linear relationship
 
 ### WOMEN WITHOUT KIDS VS WOMEN WITH KIDS
 
-Looking at the above graph, we can see that initially when the husband is working less hours (approximately less than 2500 hours), the wife with kids is working more hours but then we see after around 2500 hhours, the women with kids have their wroking hours  reduce, implying that as the husband works more hours, the wife decides to work less hours if she had kids. On the other hand, we see an oopsite trend for women without kids,where as hhours increase so does the wife's working hours. 
+![Kids VS no kids](..\..\images\kids_no_kids.png)
+
+Looking at the above graph, we can see that initially when the husband is working less hours (approximately less than 2500 hours), the wife with kids is working more hours but then we see after around 2500 hhours, the women with kids have their wroking hours  reduce, implying that as the husband works more hours, the wife decides to work less hours if she had kids. On the other hand, we see an oopsite trend for women without kids,where as hhours increase so does the wife's working hours.
+
+Hence the final model is:
+
+![Final model](..\..\images\final_model.png)
