@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Home"
+title                    : "Alvee C."
 title_separator          : "-"
 name                     : &name "Alvee"
 description              : &description "Here is it"

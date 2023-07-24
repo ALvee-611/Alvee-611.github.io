@@ -5,7 +5,7 @@ collection: portfolio
 ---
 The dataset Hours is a subset of the 1976 Panel Study of Income Dynamics (PSID) that contains 19 variables. In this project I will build a model that explains the number of hours worked by women in 1975. The dependent variable here is "hours". Models with dependent variables that contain many 0's are not usually estimated by OLS, but we ignore it for this project. 
 
-All the code and data can be found here: <i class="fab fa-fw fa-github" aria-hidden="true"></i><a href="https://github.com/{{ author.github }}">Github</a>
+All the code and data can be found here: <i class="fab fa-fw fa-github" aria-hidden="true"></i><a href="https://github.com/ALvee-611/Projects_/tree/main/Regression%20Analysis%20of%20of%20hours%20worked%20by%20women%20in%201975" target="_blank">Github</a>
 
 Weighted Least Squares (WLS) can be used when the data is heteroscedastic (but uncorrelated).
 
