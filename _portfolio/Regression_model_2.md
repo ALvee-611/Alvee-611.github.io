@@ -1,8 +1,21 @@
 ---
 title: "Testing the presence of racial discrimination in the labour market"
-excerpt: "Formulate 4 different questions related to discrimination and build one model for each question."
+excerpt: "Formulated 4 different questions related to discrimination and build one model for each question. The questions are:
+
+1. Is discrimination different for people from Boston and Chicago?
+
+2. Is discrimination different for male and female individuals with prior military experience having African-American sounding name?
+
+3. Is the effect of experience on the probability of being called back the same for people provided email address and those that didnot?
+
+4. Is discrimination different for people who mention some volunteering experience VS those that didnot for people applying to EOE?"
 collection: portfolio
 ---
+
+The purpose of this project is to test the presence of racial discrimination in the labour market. We will do so by trying to formulate 4 questions related to discrimination and then build one model for each question to try answering our question.
+
+All the code and data can be found here: <i class="fab fa-fw fa-github" aria-hidden="true"></i><a href="https://github.com/ALvee-611/Projects_/tree/main/Testing%20the%20presence%20of%20racial%20discrimination%20in%20the%20labour%20market" target="_blank">Github</a>.
+
 
 Is discrimination different for people from Boston and Chicago?
 ---

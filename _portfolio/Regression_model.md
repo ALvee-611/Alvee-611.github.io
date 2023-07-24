@@ -34,10 +34,6 @@ If the woman is highly educated, she will clearly more likely to have a stable j
 
 fincome seemed to have some measurement error.
 
-As for "wage", it doesnot really teel us much about the hours she would work since if the wife's wage was high, its not like she would necessarily work less hours.
-
-"hage","meducation" and "feduction" donot really effect the woman's ability to work and so I excluded them.
-
 "tax" is the Marginal tax rate facing the wife. Since it is the marginal rate, it doesnot really help us with the hours she worked. So I excluded that as well.
 
 To summarise, I included "havekids","age","youngkids","experience","hwage" and "hhours" in my model.
