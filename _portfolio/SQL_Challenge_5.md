@@ -32,7 +32,7 @@ In this case study we will answer the following:
     
 * What can we do about future introduction of similar sustainability updates to the business to minimise impact on sales?
 
-The database schema and information about the data attributes can be found here: <a href="https://8weeksqlchallenge.com/case-study-5/" target="_blank"></a>.
+The database schema and information about the data attributes can be found here: https://8weeksqlchallenge.com/case-study-5/
 
 ## Data Cleaning:
 
