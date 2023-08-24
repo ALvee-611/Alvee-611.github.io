@@ -1,6 +1,6 @@
 ---
 title: "Youtube video statistics analyisis"
-excerpt: "The goal of this project is to analyze the trending videos from youtube to understanding what makes a video start trending. Then once the vdeo features are analyzed, a ML model is build that will take a video title and predict how well it will perform.  "
+excerpt: "The goal of this project is to analyze the trending videos from youtube to understanding what makes a video start trending."
 collection: portfolio
 ---
 
