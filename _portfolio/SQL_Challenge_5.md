@@ -9,6 +9,7 @@ excerpt: "The key business question we want to answer are the following:
 "
 collection: portfolio
 ---
+
 ![main_image](..\..\images\case_study_week_5.png)
 
 Problem Statement:
