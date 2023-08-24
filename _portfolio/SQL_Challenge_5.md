@@ -9,7 +9,7 @@ excerpt: "The key business question we want to answer are the following:
 "
 collection: portfolio
 ---
-![model_1](..\..\images\second_images\case_study_week_5.png)
+![main_image](..\..\images\second_images\case_study_week_5.png)
 
 Problem Statement:
 
@@ -31,7 +31,7 @@ In this case study we will answer the following:
     
 * What can we do about future introduction of similar sustainability updates to the business to minimise impact on sales?
 
-The database schema and information about the data attributes can be found here: <i class="fab fa-fw fa-github" aria-hidden="true"></i><a href="https://github.com/ALvee-611/Projects_/tree/main/Testing%20the%20presence%20of%20racial%20discrimination%20in%20the%20labour%20market" target="_blank">Github</a>.
+The database schema and information about the data attributes can be found here: <a href="https://8weeksqlchallenge.com/case-study-5/" target="_blank"></a>.
 
 ## Data Cleaning:
 
