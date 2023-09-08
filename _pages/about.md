@@ -12,9 +12,3 @@ Hi! I am a detail-oriented professional with a passion for translating complex d
 
 Thank you for visiting my website! Here you will get to see some of my works.
 
-Website Layout
-------
-This website contains 2 sections:
-* Personal Projects
-* CV
-
